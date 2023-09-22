@@ -1,0 +1,5 @@
+[ERROR] | 22-09-2023 15:50 | pid: 17372: Error connecting to MongoDB: option usecreateindex is not supported
+[ERROR] | 22-09-2023 15:55 | pid: 29792: Error connecting to MongoDB: option usecreateindex is not supported
+[ERROR] | 22-09-2023 15:57 | pid: 10228: Error connecting to MongoDB: option createindexes is not supported
+[ERROR] | 22-09-2023 15:57 | pid: 26596: Error connecting to MongoDB: option createindexes is not supported
+[ERROR] | 22-09-2023 15:58 | pid: 22452: Error connecting to MongoDB: option createindexes is not supported

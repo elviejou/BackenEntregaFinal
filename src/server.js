@@ -34,8 +34,20 @@ if (isCluster && cluster.isPrimary) {
 
 } else {
 
-    const dbClient = DBFactory.createDBclient(config.DATABASE);
-    dbClient.connect();
+    // Use async/await to connect to MongoDB
+    async function connectToDatabase() {
+        try {
+            await mongoose.connect(config.URLMongo, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+              });
+            logger.info("Connected to MongoDB");
+        } catch (error) {
+            logger.error("Error connecting to MongoDB:", error);
+        }
+    }
+
+    connectToDatabase();
 
     app.use(cookieParser());
 
