@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- LINK EFECTOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ruda&display=swap" rel="stylesheet" />
+<!-- LINK BOOSTRAP -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- LINK FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<!--TOASTIFY-->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<!-- Range slider-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+<!-- Css -->
+<link rel="stylesheet" href="assets/css/style.css">
+<title>FRANPAPEL SRL - MAYORISTA EN LIBRERÍA</title>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-expand-lg bg-light" style="background-color: beige !important;">
+<section class="container-fluid">
+  <!-- LOGO -->
+<a class="navbar-brand col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2 col-xxl-2" href="../public/"><img src="/assets/img/logo2.png" alt="distribuidora mayorista de libreria" class="img-fluid"> </a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<section class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!-- LINK TIENDA/HOME-->
+      <li class="nav-item">
+          <a class="nav-link active fs-3 text-danger" aria-current="page" href="../store.html">TIENDA</a>
+      </li>
+      <!-- LINK CONTACTO-->
+      <li class="nav-item">
+        <a class="nav-link active fs-3 text-danger" aria-current="page" href="../contact.html">CONTACTO</a>
+    </li>
+  </ul>
+  <div id="perfilUsuario" class="container d-flex flex-row justify-content-center justify-content-CENTER align-items-center pb-3 pt-5"></div>
+<!-- BOTON CARRITO -->
+  <section className="navbar-nav me-auto lg-5">  
+    <li class="nav-item me-3 me-lg-0">
+      <a class="nav-link lg-5 fs-3" href="../cart.html">
+        <i id="nav-carrito" class="fas fa-shopping-cart lg-4" > CART (0)</i>
+      </a>
+    </li>
+  </section>  
+</section> 
+</section>
+</nav>
+</header>
+    <div id="dialogoInfo" class="dialogoInfo text-uppercase justify-content-center">
+    </div>
+    <main class="container my-5">
+        <div class="container">
+            <section class="py-5 bg-light mt-4">
+                <div class="container">
+                <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
+                    <div class="col-lg-6">
+                    <h1 class="h2 text-uppercase mb-0" id="pepe">FORMULARIO CARGA DE PRODUCTOS</h1>
+                    </div>
+                    <div class="col-lg-6 text-lg-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb justify-content-lg-end mb-0 px-0">
+                        <li class="breadcrumb-item"><a href="/admin">MENU</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">AGREGAR PRODUCTO</li>
+                        </ol>
+                    </nav>
+                    </div>
+                </div>
+                </div>
+            </section>
+            <!-- CREAR PRODUCTO -->
+            <section class="text-center">
+                <form class="d-flex row mt-5 align-items-center justify-content-center">
+                    <label for="title" class="form-label ">Nombre</label>
+                    <input type="text" required name="title" class="form-control border border-danger">
+                    <label for="description" class="form-label">Descripcion</label>
+                    <input type="text" required name="description" class="form-control border border-danger">
+                    <label for="code" class="form-label">Codigo</label>
+                    <input type="text" required name="code" class="form-control border border-danger">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" required name="price" step=".01" class="form-control border border-danger">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="number" required name="stock" class="form-control border border-danger">
+                    <label for="categoria" class="form-label">Categoría</label>
+                    <input type="string" required name="category" class="form-control border border-danger">
+                    <label for="foto" class="form-label">Url de foto</label>
+                    <input type="text" required name="thumbnails" class="form-control border border-danger" placeholder="https://franpapel.com/wp-content/uploads/2023/09/1144998.jpg">
+                    <button type="submit" class="btn btn-success mt-3 btn-danger">CARGAR</button>
+                </form>
+            </section>
+
+            <div class="mt-3 text-center">
+                <a href="/admin/productos"><button class="btn btn-dark mt-4">VER TODOS LOS PRODUCTOS</button></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- BOOTSTRAP-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js"></script>
+    <!-- Lightbox -->
+    <script src="/vendor/lightbox2/js/lightbox-plus-jquery.min.js"></script>
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Own JS -->
+    <script src="/js/app.js"></script>
+    <script>
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const productData = {};
+    
+            data.forEach((value, key) => {
+                productData[key] = value;
+            });
+    
+            // Envía los datos del producto al servidor para su creación en la base de datos
+            const response = await fetch('/api/productos', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData),
+            });
+    
+            if (response.ok) {
+                
+                // Producto creado exitosamente, muestra una alerta de éxito con la información del producto
+                const responseData = await response.json();
+                Swal.fire({
+                    icon: 'success',
+                    title: 'PRODUCTO CREADO',
+                });
+                console.log(responseData);
+                form.reset();
+            } else {
+                // Manejo de errores si la creación del producto falla, muestra una alerta de error con el mensaje
+                const responseData = await response.json();
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error al crear el producto',
+                    text: responseData.error,
+                });
+            }
+        });
+    </script>
+</body>
+</html>

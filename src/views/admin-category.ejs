@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- LINK EFECTOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Ruda&display=swap" rel="stylesheet" />
+<!-- LINK BOOSTRAP -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- LINK FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<!--TOASTIFY-->
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<!-- Range slider-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css">
+<!-- Css -->
+<link rel="stylesheet" href="assets/css/style.css">
+<title>FRANPAPEL SRL - MAYORISTA EN LIBRERÍA</title>
+</head>
+<body>
+<nav class="navbar sticky-top navbar-expand-lg bg-light" style="background-color: beige !important;">
+<section class="container-fluid">
+  <!-- LOGO -->
+<a class="navbar-brand col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2 col-xxl-2" href="../public/"><img src="/assets/img/logo2.png" alt="distribuidora mayorista de libreria" class="img-fluid"> </a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<section class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!-- LINK TIENDA/HOME-->
+      <li class="nav-item">
+          <a class="nav-link active fs-3 text-danger" aria-current="page" href="../store.html">TIENDA</a>
+      </li>
+      <!-- LINK CONTACTO-->
+      <li class="nav-item">
+        <a class="nav-link active fs-3 text-danger" aria-current="page" href="../contact.html">CONTACTO</a>
+    </li>
+  </ul>
+  <div id="perfilUsuario" class="container d-flex flex-row justify-content-center justify-content-CENTER align-items-center pb-3 pt-5"></div>
+<!-- BOTON CARRITO -->
+  <section className="navbar-nav me-auto lg-5">  
+    <li class="nav-item me-3 me-lg-0">
+      <a class="nav-link lg-5 fs-3" href="../cart.html">
+        <i id="nav-carrito" class="fas fa-shopping-cart lg-4" > CART (0)</i>
+      </a>
+    </li>
+  </section>  
+</section> 
+</section>
+</nav>
+</header>
+
+    <!-- Alertas informativas -->
+    <div id="dialogoInfo" class="dialogoInfo text-uppercase justify-content-center">
+    </div>
+
+    <main class="container my-5 ">
+        <div class="container">
+            <!-- HERO -->
+            <section class="py-5 bg-light mt-4">
+                <div class="container">
+                <div class="row px-4 px-lg-5 d-flex justify-content-around m-auto pt-3">
+                    <div class="d-flex justify-content-around m-auto pt-3">
+                    <h1 class="h2 d-flex text-center " >ABM CTAEGORIAS</h1>
+                    </div>
+                    <div class="col-lg-6 text-lg-right">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb justify-content-lg-end mb-0 px-0">
+                            <li class="breadcrumb-item"><a href="/admin">MENU</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                              PRODUCTOS
+                            </li>
+                          </ol>
+                        </nav>
+                      </div>
+                </div>
+                </div>
+            </section>
+            <!-- FORMULARIO -->
+            <section class="text-center">
+                <h2>CARGAR NUEVA CATEGORIA</h2>
+                <form class="mt-5 mx-5">
+                    <label for="name" class="form-label fs-5">NOMBRE CATEGORÍA NUEVA</label>
+                    <input type="text" required name="name" class="form-control d-flex justify-content-around m-auto pt-3">
+                    <button type="submit" class="btn btn-success btn-danger mt-3 fs-4">CREAR CATEGORÍA</button>
+                </form>
+            </section>
+
+            <section class="mt-3 text-center pt-5">
+                <h2>ELIMINAR CATEGORIA: </h2>
+                <button class="fs-5 " id="categorias">
+
+            </section>
+        </div>
+    </main>
+
+    <!-- BOOTSTRAP JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Own JS -->
+    <script>
+        const categoriasHTML = document.getElementById("categorias");
+
+        const addCategory = async (category)=>{
+            let res = await fetch("/api/categories", {
+                method: "POST",
+                body: JSON.stringify({name: category}),
+                headers:{
+                    'Content-Type': 'application/json'
+                }
+            })
+            res = await res.json();
+            if (res.error) return alert(res.message);
+            Swal.fire({
+                    title: `<strong>Categoría "${res.data}" agregada</strong>`,
+                    icon: 'success',
+                    html: "",
+                    showCloseButton: true,
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    focusConfirm: false,
+                    timer: 4000
+                }).then(()=>{
+                    location.reload();
+                });
+        }
+        const form = document.querySelector("form");
+        form.addEventListener("submit", async (e)=>{
+            e.preventDefault();
+            const input = e.target.querySelector("input");
+            await addCategory(input.value);
+            form.reset();
+        });
+
+        const getAllCategories = async (category)=>{
+            const categoriesArray = [];
+            let res = await fetch("/api/categories");
+            res = await res.json();
+            res.data.forEach(data =>{
+                categoriesArray.push(data._id);
+            });
+            return categoriesArray;
+        }
+
+        const deleteCategory = async (category) =>{
+            let res = await fetch("/api/categories/"+category, {
+                method: "DELETE"
+            })
+            return res;
+        }
+
+        const renderCategories = (categoriesArray) =>{
+            categoriasHTML.innerHTML = "";
+            categoriesArray.forEach(category => {
+                let contenedor = document.createElement("button");
+                contenedor.id = category;
+                contenedor.className = "py-2 px-4 bg-dark text-white mb-3";
+                contenedor.innerHTML = `<strong class="small text-uppercase font-weight-bold">${category}</strong>`;
+                contenedor.addEventListener("mouseover", ()=>{
+                    contenedor.classList.remove("bg-dark");
+                    contenedor.classList.add("bg-danger");
+                })
+                contenedor.addEventListener("mouseout", ()=>{
+                    contenedor.classList.remove("bg-danger");
+                    contenedor.classList.add("bg-dark");
+                })
+
+                contenedor.addEventListener("click", async (e)=>{
+                    const category = e.target.textContent;
+                    Swal.fire({
+                    title: 'ELIMINAR CATEGORÍA?',
+                    text: `Borraras la categoría ${category}`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'BORRAR!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            deleteCategory(category).then(res => {
+                                Swal.fire({
+                                    title: `<strong>Categoría "${category}" ELIMINADA!</strong>`,
+                                    icon: 'success',
+                                    html: res.message,
+                                    showCloseButton: true,
+                                    showCancelButton: false,
+                                    showConfirmButton: false,
+                                    focusConfirm: false,
+                                    timer: 4000
+                                }).then(()=>{
+                                    location.reload();
+                                });
+                            })
+                        }
+                    })
+                });
+
+                categoriasHTML.appendChild(contenedor);
+            });
+        }
+
+        const initial = async ()=>{
+            const categoriesArray = await getAllCategories();
+            renderCategories(categoriesArray);
+        }
+        initial();
+    </script>
+</body>
+</html>

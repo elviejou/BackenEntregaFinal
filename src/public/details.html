@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- LINK EFECTOS -->
+      <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Ruda&display=swap" rel="stylesheet" />
+      <!-- LINK BOOSTRAP -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+      <!-- LINK FONT AWESOME -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+      <!--TOASTIFY-->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- Range slider-->
+    <link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+    <!-- Css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>FRANPAPEL SRL - MAYORISTA EN LIBRERÍA</title>
+</head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg bg-light" style="background-color: beige !important;">
+    <section class="container-fluid">
+        <!-- LOGO -->
+      <a class="navbar-brand col-6 col-sm-4 col-md-4 col-lg-4 col-xl-2 col-xxl-2" href="../index.html"><img src="/assets/img/logo2.png" alt="distribuidora mayorista de libreria" class="img-fluid"> </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <section class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <!-- LINK TIENDA/HOME-->
+            <li class="nav-item">
+                <a class="nav-link active fs-3" aria-current="page" href="./">TIENDA</a>
+            </li>
+            <!-- LINK CONTACTO-->
+            <li class="nav-item">
+              <a class="nav-link active fs-3" aria-current="page" href="./contact.html">CONTACTO</a>
+          </li>
+        </ul>
+        <div id="perfilUsuario" class="container d-flex flex-row justify-content-center justify-content-CENTER align-items-center pb-3 pt-5"></div>
+      <!-- BOTON CARRITO -->
+        <section className="navbar-nav me-auto lg-5">  
+          <li class="nav-item me-3 me-lg-0">
+            <a class="nav-link lg-5 fs-3" href="../cart.html">
+              <i id="nav-carrito" class="fas fa-shopping-cart lg-4" > CART (0)</i>
+            </a>
+          </li>
+        </section>  
+      </section> 
+    </section>
+  </nav>
+  </header>
+      <!-- Sidebar del carrito -->
+      <div id="barraCarrito-container" class="row barraCarrito-container fixed-top">
+        <div id="barraCarrito" class="barraCarrito row">
+          <div class="barraCarrito-cerrar row justify-content-start">
+            <button id="barraCarrito-cerrar" class="col-4 btn-close p-4" type="button"></button>
+            <h4 class="col-8 mt-3">Carrito</h4>
+          </div>
+          <div id="barraCarrito-listaItems" class="row barraCarrito-listaItems">
+          </div>
+          <div class="row barraCarrito-botones">
+            <a href="/cart.html" class=" btn-dark text-uppercase mb-2 rounded p-2">
+              <span>Ver carrito</span>
+            </a>
+            <a href="/checkout.html" class=" btn-dark text-uppercase mb-1 rounded p-2">
+              <span>Finalizar Compra</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Alertas informativas -->
+      <div id="dialogoInfo" class="dialogoInfo text-uppercase justify-content-center">
+      </div>
+      <!-- modales -->
+      <div id="modales">
+      </div>
+      
+      <section class="py-5 mt-4">
+        <div class="container">
+          <div id="detalle" class="row mb-5">
+          </div>
+        </div>
+      </section>
+
+      <footer class="bg-dark text-center text-white">
+        <!-- Copyright -->
+          <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <a class="text-white" href="#">MARTIN EXEQUIEL CALO - 2023 - BACKEND</a>
+          </div>
+      </footer>
+
+    <!-- BOOTSTRAP JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+    <!-- Lightbox -->
+    <script src="/vendor/lightbox2/js/lightbox-plus-jquery.min.js"></script>
+    <!-- OWL Carrousel -->
+    <script src="/vendor/owl.carousel2/owl.carousel.min.js"></script>
+    <script src="/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+    <!-- SweetAlert -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- JS del template que use -->
+    <script src="/js/front.js" defer></script>
+    <!-- JavaScrpit -->
+    <script src="/js/app.js"></script>
+    <script src="/js/app-DOMproductos.js"></script>
+    <script src="/js/app-detalle.js"></script>
+    <script src="/js/app-newsletter.js"></script>
+  </body>
+</html>
